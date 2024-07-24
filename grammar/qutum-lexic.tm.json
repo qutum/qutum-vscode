@@ -1,0 +1,62 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Qutum",
+	"patterns": [
+		{ "include": "#name" },
+		{ "include": "#hex" },
+		{ "include": "#int" },
+		{ "include": "#float" },
+		{ "include": "#string" },
+		{ "include": "#stringblock" },
+		{ "include": "#comment" },
+		{ "include": "#commentblock" },
+		{ "include": "#punc" },
+		{ "include": "#operator" }
+	],
+	"repository": {
+		"name": {
+			"patterns": [
+				{
+					"name": "entity.name.qutum",
+					"match": "[a-zA-Z_][a-zA-Z\\d_]*"
+				}
+			]
+		},
+		"hex": {
+			"patterns": [
+				{
+					"name": "constant.numeric.hex.qutum",
+					"match": "0[xX](_*\\h)+"
+				}
+			]
+		},
+		"int": {
+			"patterns": [
+				{
+					"name": "constant.numeric.int.qutum",
+					"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?\\b"
+				}
+			]
+		},
+		"float": {
+			"patterns": [
+				{
+					"name": "constant.numeric.float.qutum",
+					"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?([eE][+\\-]?\\d+[fF]?)?"
+				}
+			]
+		},
+		"string": {
+			"name": "string.line.qutum",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.qutum",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.qutum"
+}

@@ -27,7 +27,7 @@
 			{
 				"language": "qutum",
 				"scopeName": "source.qutum",
-				"path": "./syntaxes/qutum.tmLanguage.json"
+				"path": "./grammar/qutum-lexic.tm.json"
 			}
 		]
 	}
