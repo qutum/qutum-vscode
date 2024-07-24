@@ -20,7 +20,11 @@
 				"extensions": [
 					".q"
 				],
-				"configuration": "./language-configuration.json"
+				"configuration": "./language-configuration.json",
+				"icon": {
+					"dark": "image/qutum.png",
+					"light": "image/qutum.png"
+				}
 			}
 		],
 		"grammars": [

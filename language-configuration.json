@@ -15,7 +15,9 @@
 		["{", "}"],
 		["`", "`"],
 		["'", "'"],
-		["\"", "\""]
+		["\"", "\""],
+		["\\#", "#\\"],
+		["\\\"", "\"\\"]
 	],
 	// symbols that can be used to surround a selection
 	"surroundingPairs": [
@@ -25,5 +27,16 @@
 		["`", "`"],
 		["'", "'"],
 		["\"", "\""]
+	],
+	"indentationRules": {
+		"unIndentedLinePattern": "^",
+		"increaseIndentPattern": "\\n", // no effect
+		"decreaseIndentPattern": "\\n" // no effect
+	},
+	"onEnterRules": [
+		{
+			"beforeText": ".",
+			"action": { "indent": "none" }
+		}
 	]
 }

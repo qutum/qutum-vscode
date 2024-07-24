@@ -1,53 +1,56 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Qutum",
+	"scopeName": "source.qutum",
 	"patterns": [
 		{ "include": "#name" },
 		{ "include": "#hex" },
 		{ "include": "#int" },
 		{ "include": "#float" },
-		{ "include": "#string" },
-		{ "include": "#stringblock" },
 		{ "include": "#comment" },
 		{ "include": "#commentblock" },
+		{ "include": "#string" },
+		{ "include": "#stringblock" },
 		{ "include": "#punc" },
-		{ "include": "#operator" }
+		{ "include": "#operator" },
+		{ "include": "#bitwise" },
+		{ "include": "#arithmetic" },
+		{ "include": "#comparison" },
+		{ "include": "#logical" }
 	],
 	"repository": {
 		"name": {
-			"patterns": [
-				{
-					"name": "entity.name.qutum",
-					"match": "[a-zA-Z_][a-zA-Z\\d_]*"
-				}
-			]
+			"name": "entity.name.qutum",
+			"match": "[a-zA-Z_][a-zA-Z\\d_]*"
 		},
 		"hex": {
-			"patterns": [
-				{
-					"name": "constant.numeric.hex.qutum",
-					"match": "0[xX](_*\\h)+"
-				}
-			]
+			"name": "constant.numeric.hex.qutum",
+			"match": "0[xX](_*\\h)+"
 		},
 		"int": {
-			"patterns": [
-				{
-					"name": "constant.numeric.int.qutum",
-					"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?\\b"
-				}
-			]
+			"name": "constant.numeric.int.qutum",
+			"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?\\b"
 		},
 		"float": {
+			"name": "constant.numeric.float.qutum",
+			"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?([eE][+\\-]?\\d+[fF]?)?"
+		},
+		"comment": {
+			"name": "comment.line.qutum",
+			"match": "##.*$"
+		},
+		"commentblock": {
+			"name": "comment.block.qutum",
+			"begin": "(\\\\+)#",
+			"end": "#\\1",
 			"patterns": [
 				{
-					"name": "constant.numeric.float.qutum",
-					"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?([eE][+\\-]?\\d+[fF]?)?"
+					"name": "constant.character.qutum"
 				}
 			]
 		},
 		"string": {
-			"name": "string.line.qutum",
+			"name": "string.quoted.line.qutum",
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
@@ -56,7 +59,32 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"stringblock": {
+			"name": "string.unquoted.qutum",
+			"begin": "(\\\\+)\"",
+			"end": "\"\\1",
+			"patterns": [
+				{
+					"name": "constant.character.qutum"
+				}
+			]
+		},
+		"bitwise": {
+			"name": "keyword.operator.bitwise.qutum",
+			"match": "<<|>>>?|&&|\\|\\||\\+\\+|--"
+		},
+		"arithmetic": {
+			"name": "keyword.operator.arithmetic.qutum",
+			"match": "\\*|/|%|//|%%|\\+|-"
+		},
+		"comparison": {
+			"name": "keyword.operator.comparison.qutum",
+			"match": "==|/=|<=|>=|<|>"
+		},
+		"logical": {
+			"name": "keyword.operator.logical.qutum",
+			"match": "&|\\||\\+\\||!"
 		}
-	},
-	"scopeName": "source.qutum"
+	}
 }
