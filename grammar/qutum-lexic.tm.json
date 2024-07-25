@@ -11,7 +11,8 @@
 		{ "include": "#commentblock" },
 		{ "include": "#string" },
 		{ "include": "#stringblock" },
-		{ "include": "#punc" },
+		{ "include": "#path" },
+		{ "include": "#punctuation" },
 		{ "include": "#operator" },
 		{ "include": "#bitwise" },
 		{ "include": "#arithmetic" },
@@ -20,7 +21,7 @@
 	],
 	"repository": {
 		"name": {
-			"name": "entity.name.qutum",
+			"name": "variable.qutum",
 			"match": "[a-zA-Z_][a-zA-Z\\d_]*"
 		},
 		"hex": {
@@ -36,39 +37,58 @@
 			"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?([eE][+\\-]?\\d+[fF]?)?"
 		},
 		"comment": {
-			"name": "comment.line.qutum",
-			"match": "##.*$"
+			"name": "punctuation.definition.comment.qutum",
+			"contentName": "comment.line.qutum",
+			"begin": "##",
+			"end": "$"
 		},
 		"commentblock": {
-			"name": "comment.block.qutum",
+			"name": "punctuation.definition.comment.qutum",
+			"contentName": "comment.block.qutum",
 			"begin": "(\\\\+)#",
-			"end": "#\\1",
-			"patterns": [
-				{
-					"name": "constant.character.qutum"
-				}
-			]
+			"end": "#\\1"
 		},
 		"string": {
-			"name": "string.quoted.line.qutum",
+			"name": "punctuation.definition.string.qutum",
 			"begin": "\"",
 			"end": "\"",
+			"contentName": "string.quoted.line.qutum",
 			"patterns": [
 				{
 					"name": "constant.character.escape.qutum",
-					"match": "\\\\."
+					"match": "\\\\[0tnr\".`\\\\]|\\\\x\\h\\h|\\\\u\\h\\h\\h\\h"
 				}
 			]
 		},
 		"stringblock": {
-			"name": "string.unquoted.qutum",
+			"name": "punctuation.definition.string.qutum",
+			"contentName": "string.unquoted.qutum",
 			"begin": "(\\\\+)\"",
-			"end": "\"\\1",
+			"end": "\"\\1"
+		},
+		"path": {
+			"name": "punctuation.definition.name.qutum",
+			"begin": "`",
+			"end": "`",
+			"contentName": "variable.qutum",
 			"patterns": [
 				{
-					"name": "constant.character.qutum"
+					"name": "keyword.operator.qutum",
+					"match": "\\."
+				},
+				{
+					"name": "constant.character.escape.qutum",
+					"match": "\\\\[0tnr\".`\\\\]|\\\\x\\h\\h|\\\\u\\h\\h\\h\\h"
 				}
 			]
+		},
+		"punctuation": {
+			"name": "punctuation.qutum",
+			"match": "[()\\[\\]{}]"
+		},
+		"operator": {
+			"name": "keyword.operator.qutum",
+			"match": "[.=]"
 		},
 		"bitwise": {
 			"name": "keyword.operator.bitwise.qutum",
@@ -76,15 +96,15 @@
 		},
 		"arithmetic": {
 			"name": "keyword.operator.arithmetic.qutum",
-			"match": "\\*|/|%|//|%%|\\+|-"
+			"match": "[*%-]|/[^=]|//|%%|\\+[^\\|]"
 		},
 		"comparison": {
 			"name": "keyword.operator.comparison.qutum",
-			"match": "==|/=|<=|>=|<|>"
+			"match": "[=/<>]=|<|>"
 		},
 		"logical": {
 			"name": "keyword.operator.logical.qutum",
-			"match": "&|\\||\\+\\||!"
+			"match": "[&|!]|\\+\\|"
 		}
 	}
 }
