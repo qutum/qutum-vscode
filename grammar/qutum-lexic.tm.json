@@ -5,19 +5,18 @@
 	"patterns": [
 		{ "include": "#name" },
 		{ "include": "#hex" },
-		{ "include": "#int" },
-		{ "include": "#float" },
-		{ "include": "#comment" },
-		{ "include": "#commentblock" },
-		{ "include": "#string" },
-		{ "include": "#stringblock" },
+		{ "include": "#num" },
+		{ "include": "#com" },
+		{ "include": "#comb" },
+		{ "include": "#str" },
+		{ "include": "#strb" },
 		{ "include": "#path" },
 		{ "include": "#punctuation" },
-		{ "include": "#operator" },
 		{ "include": "#bitwise" },
-		{ "include": "#arithmetic" },
+		{ "include": "#logical" },
 		{ "include": "#comparison" },
-		{ "include": "#logical" }
+		{ "include": "#arithmetic" },
+		{ "include": "#operator" }
 	],
 	"repository": {
 		"name": {
@@ -28,27 +27,23 @@
 			"name": "constant.numeric.hex.qutum",
 			"match": "0[xX](_*\\h)+"
 		},
-		"int": {
-			"name": "constant.numeric.int.qutum",
-			"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?\\b"
+		"num": {
+			"name": "constant.numeric.qutum",
+			"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?([eE][+\\-]?\\d+)?[fF]?"
 		},
-		"float": {
-			"name": "constant.numeric.float.qutum",
-			"match": "\\d(_*\\d)*(\\.\\d(_*\\d)*)?([eE][+\\-]?\\d+[fF]?)?"
-		},
-		"comment": {
+		"com": {
 			"name": "punctuation.definition.comment.qutum",
 			"contentName": "comment.line.qutum",
 			"begin": "##",
 			"end": "$"
 		},
-		"commentblock": {
+		"comb": {
 			"name": "punctuation.definition.comment.qutum",
 			"contentName": "comment.block.qutum",
 			"begin": "(\\\\+)#",
 			"end": "#\\1"
 		},
-		"string": {
+		"str": {
 			"name": "punctuation.definition.string.qutum",
 			"begin": "\"",
 			"end": "\"",
@@ -60,7 +55,7 @@
 				}
 			]
 		},
-		"stringblock": {
+		"strb": {
 			"name": "punctuation.definition.string.qutum",
 			"contentName": "string.unquoted.qutum",
 			"begin": "(\\\\+)\"",
@@ -88,23 +83,23 @@
 		},
 		"operator": {
 			"name": "keyword.operator.qutum",
-			"match": "[.=]"
+			"match": "[,.=]"
 		},
-		"bitwise": {
-			"name": "keyword.operator.bitwise.qutum",
-			"match": "<<|>>>?|&&|\\|\\||\\+\\+|--"
-		},
-		"arithmetic": {
-			"name": "keyword.operator.arithmetic.qutum",
-			"match": "[*%-]|/[^=]|//|%%|\\+[^\\|]"
+		"logical": {
+			"name": "keyword.operator.logical.qutum",
+			"match": "[|&]|!=?"
 		},
 		"comparison": {
 			"name": "keyword.operator.comparison.qutum",
 			"match": "[=/<>]=|<|>"
 		},
-		"logical": {
-			"name": "keyword.operator.logical.qutum",
-			"match": "[&|!]|\\+\\|"
+		"arithmetic": {
+			"name": "keyword.operator.arithmetic.qutum",
+			"match": "[+\\-*]|//?|%%?"
+		},
+		"bitwise": {
+			"name": "keyword.operator.bitwise.qutum",
+			"match": "\\|\\||\\+\\+|&&|--|<<|>>>?"
 		}
 	}
 }
